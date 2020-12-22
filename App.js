@@ -4,9 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import AuthScreen from "./screens/AuthScreen";
-import FindPathScreen from "./screens/FindPathScreen";
-import NewPathScreen from "./screens/NewPathScreen";
+import SearchScreen from "./screens/SearchScreen";
 import Colors from "./constants/Colors";
 
 export default function App() {
@@ -28,9 +26,9 @@ export default function App() {
         initialRouteName="FindPath"
       >
         <Stack.Screen
-          name="FindPath"
+          name="SearchScreen"
           component={FindPathScreen}
-          options={{ title: "Nearby Paths" }}
+          options={{ title: "Search Movies" }}
         />
         <Stack.Screen name="NewPath" component={NewPathScreen} />
         <Stack.Screen name="Auth" component={AuthScreen} />
