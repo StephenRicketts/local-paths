@@ -23,25 +23,14 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={headerOptions}
-        initialRouteName="FindPath"
+        initialRouteName="SearchScreen"
       >
         <Stack.Screen
           name="SearchScreen"
-          component={FindPathScreen}
+          component={SearchScreen}
           options={{ title: "Search Movies" }}
         />
-        <Stack.Screen name="NewPath" component={NewPathScreen} />
-        <Stack.Screen name="Auth" component={AuthScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

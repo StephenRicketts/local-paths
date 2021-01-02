@@ -1,23 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { View, Text, StyleSheet, TextInput } from "react-native";
+import ResultsList from "../components/ResultsList";
 
 const SearchScreen = (props) => {
   const apiUrl =
-    "https://api.themoviedb.org/3/search/movie?api_key=a7bbb7332a2c4eaee994c90369bd5850";
-  const [searchState, setSearchState] = useState({
-    s: "Enter a movie...",
-    results: [],
-    selected: {},
-  });
+    "https://api.themoviedb.org/3/search/movie?api_key=a7bbb7332a2c4eaee994c90369bd5850&language=en-US&page=1&include_adult=false";
+  const [query, setQuery] = useState("");
+  const [searchResults, setSearchResults] = useState(null);
 
   const search = () => {
     axios(apiUrl + "&query=" + searchState.s).then(({ data }) => {
-      let results = data.search;
-      setSearchState((prevState) => {
-        return { ...prevState, result: results };
-      });
+      setSearchResults(data);
     });
+    console.log("this should be the search results", searchResults);
   };
 
   return (
@@ -25,14 +21,11 @@ const SearchScreen = (props) => {
       <Text style={styles.title}>Movie DB</Text>
       <TextInput
         style={styles.searchBox}
-        value={searchState.s}
-        onChangeText={(text) =>
-          setSearchState((prevState) => {
-            return { ...prevState, s: text };
-          })
-        }
+        value={query}
+        onChangeText={(text) => setQuery(text)}
         onSubmitEditing={search}
       />
+      <ResultsList results={searchResults} />
     </View>
   );
 };
@@ -59,7 +52,7 @@ const styles = StyleSheet.create({
     padding: 20,
     width: "100%",
     backgroundColor: "#FFF",
-    norderRadius: 8,
+    borderRadius: 8,
     marginBottom: 40,
   },
 });
