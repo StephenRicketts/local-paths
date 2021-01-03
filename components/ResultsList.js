@@ -1,5 +1,6 @@
 import React from "react";
-import { ScrollView, View, Image, Text } from "react-native";
+import { ScrollView, View, Text } from "react-native";
+import MovieCard from "../components/MovieCard";
 
 const ResultsList = (props) => {
   return (
@@ -7,15 +8,8 @@ const ResultsList = (props) => {
       <Text>Results Motherfucker</Text>
       <ScrollView>
         {props.results.map((movie) => {
-          <View>
-            <Image
-              source={{ uri: movie.poster_path }}
-              style={{
-                width: "100%",
-                height: 300,
-              }}
-            />
-          </View>;
+          console.log("this should be the movie", movie);
+          return <MovieCard title={movie.original_title} key={movie.id} />;
         })}
       </ScrollView>
     </View>

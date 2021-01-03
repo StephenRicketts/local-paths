@@ -10,10 +10,10 @@ const SearchScreen = (props) => {
   const [searchResults, setSearchResults] = useState(null);
 
   const search = () => {
-    axios(apiUrl + "&query=" + searchState.s).then(({ data }) => {
+    axios(apiUrl + "&query=" + query).then(({ data }) => {
       setSearchResults(data);
     });
-    console.log("this should be the search results", searchResults);
+    console.log("this should be the search results", searchResults.results);
   };
 
   return (
@@ -25,7 +25,9 @@ const SearchScreen = (props) => {
         onChangeText={(text) => setQuery(text)}
         onSubmitEditing={search}
       />
-      <ResultsList results={searchResults} />
+      {searchResults !== null && (
+        <ResultsList results={searchResults.results} />
+      )}
     </View>
   );
 };
