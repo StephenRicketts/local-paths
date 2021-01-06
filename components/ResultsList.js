@@ -1,43 +1,26 @@
 import React from "react";
-import { ScrollView, View, Text, StyleSheet, Image } from "react-native";
+import { ScrollView, View } from "react-native";
+import ResultsListItem from "../components/ResultsListItem";
 
 const ResultsList = (props) => {
   return (
     <View>
       <ScrollView>
         {props.results.map((movie) => {
-          console.log("this should be the movie poster", movie.poster_path);
+          console.log("This is the movie", movie);
+          let yearReleased = movie.release_date.substr(0, 4);
           return (
-            <View style={styles.container} key={movie.id}>
-              <Image
-                style={styles.image}
-                source={{
-                  uri: "https://image.tmdb.org/t/p/w500" + movie.poster_path,
-                }}
-              />
-              <Text>{movie.title}</Text>
-            </View>
+            <ResultsListItem
+              key={movie.id}
+              poster={movie.poster_path}
+              title={movie.original_title}
+              yearReleased={yearReleased}
+            />
           );
         })}
       </ScrollView>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    flex: 1,
-    width: "100%",
-    padding: 10,
-    backgroundColor: "#FFF",
-    borderBottomWidth: 1,
-    borderBottomColor: "black",
-  },
-  image: {
-    height: 100,
-    width: "25%",
-  },
-});
 
 export default ResultsList;
