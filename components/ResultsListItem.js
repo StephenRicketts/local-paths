@@ -1,15 +1,18 @@
 import React from "react";
 import { View, Image, Text, StyleSheet, Pressable } from "react-native";
+import { CommonActions } from "@react-navigation/native";
 
 const ResultsListItem = (props) => {
   const selectMovie = () => {
     console.log("selectMovie hit");
-    props.navigation.navigate({
-      routeName: "MovieCard",
-      params: {
-        movieData: props.movieData,
-      },
-    });
+    props.navigation.dispatch(
+      CommonActions.navigate({
+        name: "MovieCard",
+        params: {
+          movieData: props.movieData,
+        },
+      })
+    );
   };
 
   return (
