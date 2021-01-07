@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import ResultsList from "../components/ResultsList";
 import SearchBar from "../components/SearchBar";
 
-const SearchScreen = () => {
+const SearchScreen = (props) => {
   const [searchResults, setSearchResults] = useState([]);
   return (
     <View style={styles.container}>
@@ -13,7 +13,10 @@ const SearchScreen = () => {
         searchResults={searchResults}
       />
       {searchResults.length !== 0 && (
-        <ResultsList results={searchResults.results} />
+        <ResultsList
+          results={searchResults.results}
+          navigation={props.navigation}
+        />
       )}
     </View>
   );

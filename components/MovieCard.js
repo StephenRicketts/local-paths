@@ -2,10 +2,11 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
 const MovieCard = (props) => {
+  const movieData = props.navigation.getParam("movieData");
   return (
     <View style={styles.card}>
       <Image />
-      <Text style={styles.title}>{props.title}</Text>
+      <Text style={styles.title}>{movieData.movie.title}</Text>
     </View>
   );
 };
@@ -13,7 +14,7 @@ const MovieCard = (props) => {
 const styles = StyleSheet.create({
   card: {
     flex: 1,
-    justifyContent: center,
+    justifyContent: "center",
     height: 300,
     borderRadius: 6,
     elevation: 3,
