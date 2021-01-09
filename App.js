@@ -6,6 +6,7 @@ import * as Font from "expo-font";
 import { AppLoading } from "expo";
 
 import SearchScreen from "./screens/SearchScreen";
+import LandingScreen from "./screens/LandingScreen";
 import MovieCard from "./components/MovieCard";
 import Colors from "./constants/Colors";
 
@@ -45,7 +46,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={headerOptions}
-        initialRouteName="SearchScreen"
+        initialRouteName="LandingScreen"
       >
         <Stack.Screen
           name="SearchScreen"
@@ -53,6 +54,7 @@ export default function App() {
           options={{ title: "Search Movies" }}
         />
         <Stack.Screen name="MovieCard" component={MovieCard} />
+        <Stack.Screen name="LandingScreen" component={LandingScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
