@@ -1,36 +1,14 @@
 import "react-native-gesture-handler";
-import React, { useState } from "react";
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import * as Font from "expo-font";
-import { AppLoading } from "expo";
 
 import SearchScreen from "./screens/SearchScreen";
 import LandingScreen from "./screens/LandingScreen";
 import MovieCard from "./components/MovieCard";
 import Colors from "./constants/Colors";
 
-const fetchFonts = () => {
-  return Font.loadAsync({
-    "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
-    "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
-    seaside: require("./assets/fonts/SEASRN__.ttf"),
-  });
-};
-
 export default function App() {
-  const [fontLoaded, setFontLoaded] = useState(false);
-
-  if (!fontLoaded) {
-    return (
-      <AppLoading
-        startAsync={fetchFonts}
-        onFinish={() => setDataLoaded(true)}
-        onError={(err) => console.log(err)}
-      />
-    );
-  }
-
   const Stack = createStackNavigator();
 
   const headerOptions = {
@@ -42,6 +20,7 @@ export default function App() {
       fontWeight: "bold",
     },
   };
+
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -54,7 +33,11 @@ export default function App() {
           options={{ title: "Search Movies" }}
         />
         <Stack.Screen name="MovieCard" component={MovieCard} />
-        <Stack.Screen name="LandingScreen" component={LandingScreen} />
+        <Stack.Screen
+          name="LandingScreen"
+          component={LandingScreen}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
