@@ -7,7 +7,7 @@ const MainButton = (props) => {
   return (
     <Pressable onPress={props.onPress}>
       <View style={{ ...props.style, ...styles.background }}>
-        <TitleText>{props.children}</TitleText>
+        <TitleText style={styles.font}>{props.children}</TitleText>
       </View>
     </Pressable>
   );
@@ -18,11 +18,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: Colors.secondary,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
     borderRadius: 25,
     borderColor: Colors.primary,
     elevation: 32,
+  },
+  font: {
+    fontSize: 18,
   },
 });
 

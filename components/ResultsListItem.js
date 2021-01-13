@@ -2,6 +2,8 @@ import React from "react";
 import { View, Image, Text, StyleSheet, Pressable } from "react-native";
 import { CommonActions } from "@react-navigation/native";
 
+import ResultsButtons from "../components/ResultsButtons";
+
 const ResultsListItem = (props) => {
   const selectMovie = () => {
     console.log("selectMovie hit");
@@ -17,7 +19,7 @@ const ResultsListItem = (props) => {
 
   return (
     <Pressable onPress={selectMovie}>
-      <View style={styles.container}>
+      <View style={styles.detailsContainer}>
         <Image
           style={styles.image}
           source={{
@@ -29,12 +31,15 @@ const ResultsListItem = (props) => {
           <Text style={styles.year}>{props.yearReleased}</Text>
         </View>
       </View>
+      <View style={styles.buttonContainer}>
+        <ResultsButtons />
+      </View>
     </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  detailsContainer: {
     flexDirection: "row",
     flex: 1,
     alignContent: "center",
@@ -44,6 +49,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "black",
   },
+  buttonContainer: {},
   image: {
     height: 100,
     width: "25%",

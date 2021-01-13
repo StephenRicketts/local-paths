@@ -1,64 +1,81 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
+import { CommonActions } from "@react-navigation/native";
+
 import TitleText from "../components/TitleText";
 import MainButton from "../components/MainButton";
+import Background from "../components/Background";
+import DefaultText from "../components/DefaultText";
 
-const LandingScreen = () => {
+const LandingScreen = (props) => {
+  const goToSearch = () => {
+    props.navigation.dispatch(
+      CommonActions.navigate({
+        name: "SearchScreen",
+      })
+    );
+  };
+
   return (
-    <View style={styles.container}>
-      <LinearGradient colors={["crimson", "black"]} style={styles.background}>
-        <View style={styles.contentContainer}>
+    <Background>
+      <View style={styles.contentContainer}>
+        <View style={styles.titleContainer}>
           <TitleText style={styles.welcome}>Welcome to...</TitleText>
           <TitleText style={styles.title}>Movie Survivor</TitleText>
-          <View style={styles.buttonContainer}>
-            <MainButton style={styles.button}>Search Movies</MainButton>
-          </View>
-          <TitleText style={styles.powered}>Powered by:</TitleText>
-          <Image
-            style={styles.logo}
-            source={require("../assets/TMDBlogo.png")}
-          />
         </View>
-      </LinearGradient>
-    </View>
+        <View style={styles.summaryContainer}>
+          <DefaultText>
+            Search Movie Info, create a viewing list, settle the endless debate
+            of what movie to watch.
+          </DefaultText>
+        </View>
+        <View style={styles.buttonContainer}>
+          <MainButton style={styles.button} onPress={goToSearch}>
+            Search Movies
+          </MainButton>
+        </View>
+        <TitleText style={styles.powered}>Powered by:</TitleText>
+        <Image style={styles.logo} source={require("../assets/TMDBlogo.png")} />
+      </View>
+    </Background>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  background: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    height: "100%",
-  },
   contentContainer: {
     flex: 1,
     alignItems: "center",
   },
+  titleContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   welcome: {
     fontSize: 26,
-    paddingTop: "40%",
     elevation: 12,
   },
   title: {
     fontSize: 40,
     elevation: 24,
-    fontWeight: 500,
   },
-  button: {
-    marginVertical: 25,
+  summaryContainer: {
+    flex: 1,
+    justifyContent: "center",
+    width: "60%",
+    height: "10%",
+  },
+  buttonContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    height: "20%",
   },
   LogoContainer: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    height: "20%",
   },
   logo: {
     height: 26,
@@ -67,7 +84,7 @@ const styles = StyleSheet.create({
   },
   powered: {
     fontSize: 26,
-    paddingTop: "95%",
+    // paddingTop: "75%",
   },
 });
 
