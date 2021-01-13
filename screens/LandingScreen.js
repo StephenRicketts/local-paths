@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Button, Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import TitleText from "../components/TitleText";
+import MainButton from "../components/MainButton";
 
 const LandingScreen = () => {
   return (
@@ -10,7 +11,9 @@ const LandingScreen = () => {
         <View style={styles.contentContainer}>
           <TitleText style={styles.welcome}>Welcome to...</TitleText>
           <TitleText style={styles.title}>Movie Survivor</TitleText>
-
+          <View style={styles.buttonContainer}>
+            <MainButton style={styles.button}>Search Movies</MainButton>
+          </View>
           <TitleText style={styles.powered}>Powered by:</TitleText>
           <Image
             style={styles.logo}
@@ -42,9 +45,15 @@ const styles = StyleSheet.create({
   welcome: {
     fontSize: 26,
     paddingTop: "40%",
+    elevation: 12,
   },
   title: {
     fontSize: 40,
+    elevation: 24,
+    fontWeight: 500,
+  },
+  button: {
+    marginVertical: 25,
   },
   LogoContainer: {
     flex: 1,
@@ -54,11 +63,11 @@ const styles = StyleSheet.create({
   logo: {
     height: 26,
     width: "100%",
-    marginBottom: 40,
+    marginBottom: 10,
   },
   powered: {
     fontSize: 26,
-    padding: 10,
+    paddingTop: "95%",
   },
 });
 
