@@ -31,9 +31,6 @@ const ResultsListItem = (props) => {
           <Text style={styles.year}>{props.yearReleased}</Text>
         </View>
       </View>
-      <View style={styles.buttonContainer}>
-        <ResultsButtons />
-      </View>
     </Pressable>
   );
 };

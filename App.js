@@ -1,46 +1,44 @@
 import "react-native-gesture-handler";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
 
 import SearchScreen from "./screens/SearchScreen";
 import LandingScreen from "./screens/LandingScreen";
 import MovieCard from "./components/MovieCard";
 import Colors from "./constants/Colors";
+import SurvivorScreen from "./screens/SurvivorScreen";
+import ViewingListScreen from "./screens/ViewingListScreen";
 
 export default function App() {
-  const Stack = createStackNavigator();
   const Tab = createBottomTabNavigator();
-
-  const headerOptions = {
-    headerStyle: {
-      backgroundColor: Colors.primary,
-    },
-    headerTintColor: "#fff",
-    headerTitleStyle: {
-      fontWeight: "bold",
-    },
-  };
 
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={headerOptions}
-        initialRouteName="LandingScreen"
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === "Search") {
+              iconName = focused ? "search-circle" : "search-circle-outline";
+            } else if (route.name === "ViewingList") {
+              iconName = focused ? "list-circle" : "list-circle-outline";
+            }
+
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: Colors.primary,
+          inactiveTintColor: Colors.secondary,
+        }}
       >
-        <Stack.Screen
-          name="SearchScreen"
-          component={SearchScreen}
-          options={{ title: "Search Movies" }}
-        />
-        <Stack.Screen name="MovieCard" component={MovieCard} />
-        <Stack.Screen
-          name="LandingScreen"
-          component={LandingScreen}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
+        <Tab.Screen name="Search" component={SearchScreen} />
+        <Tab.Screen name="ViewingList" component={ViewingListScreen} />
+        <Tab.Screen name="Survivor" component={SurvivorScreen} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }

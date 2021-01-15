@@ -3,11 +3,11 @@ import { View, Text, StyleSheet } from "react-native";
 
 import Background from "../components/Background";
 
-const SurvivorScreen = (props) => {
+const ViewingListScreen = (props) => {
   return (
     <Background>
       <View style={styles.container}>
-        <Text>Survivor Screen Page</Text>
+        <Text>Viewing List Page</Text>
       </View>
     </Background>
   );
@@ -21,4 +21,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SurvivorScreen;
+export default ViewingListScreen;
