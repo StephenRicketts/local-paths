@@ -8,20 +8,18 @@ import Background from "../components/Background";
 const SearchScreen = (props) => {
   const [searchResults, setSearchResults] = useState([]);
   return (
-    <Background>
-      <View style={styles.container}>
-        <SearchBar
-          setSearchResults={setSearchResults}
-          searchResults={searchResults}
+    <View style={styles.container}>
+      <SearchBar
+        setSearchResults={setSearchResults}
+        searchResults={searchResults}
+      />
+      {searchResults.length !== 0 && (
+        <ResultsList
+          results={searchResults.results}
+          navigation={props.navigation}
         />
-        {searchResults.length !== 0 && (
-          <ResultsList
-            results={searchResults.results}
-            navigation={props.navigation}
-          />
-        )}
-      </View>
-    </Background>
+      )}
+    </View>
   );
 };
 

@@ -12,10 +12,6 @@ const SearchBar = (props) => {
     axios(apiUrl + "&query=" + query).then(({ data }) => {
       props.setSearchResults(data);
     });
-    console.log(
-      "this should be the search results",
-      props.searchResults.results
-    );
   };
 
   return (
@@ -39,6 +35,7 @@ const SearchBar = (props) => {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: "10%",
     padding: 6,
     flexDirection: "row",
     alignItems: "center",

@@ -2,7 +2,7 @@ import "react-native-gesture-handler";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import SearchScreen from "./screens/SearchScreen";
 import LandingScreen from "./screens/LandingScreen";
@@ -22,12 +22,20 @@ export default function App() {
             let iconName;
 
             if (route.name === "Search") {
-              iconName = focused ? "search-circle" : "search-circle-outline";
+              iconName = "search-web";
             } else if (route.name === "ViewingList") {
-              iconName = focused ? "list-circle" : "list-circle-outline";
+              iconName = "view-list";
+            } else if (route.name === "Survivor") {
+              iconName = "campfire";
             }
 
-            return <Ionicons name={iconName} size={size} color={color} />;
+            return (
+              <MaterialCommunityIcons
+                name={iconName}
+                size={size}
+                color={color}
+              />
+            );
           },
         })}
         tabBarOptions={{
