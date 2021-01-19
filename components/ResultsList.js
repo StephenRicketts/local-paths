@@ -12,14 +12,7 @@ const ResultsList = (props) => {
         {props.results.map((movie) => {
           let yearReleased = movie.release_date.substr(0, 4);
           return (
-            <View>
-              <MovieModal
-                movieInfo={movie}
-                visible={showMovieModal}
-                yearReleased={yearReleased}
-                key={movie.id}
-                setShowMovieModal={setShowMovieModal}
-              />
+            <View key={movie.id}>
               <ResultsListItem
                 poster={movie.poster_path}
                 title={movie.original_title}

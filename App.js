@@ -3,16 +3,27 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { createStackNavigator } from "@react-navigation/stack";
 
 import SearchScreen from "./screens/SearchScreen";
 import LandingScreen from "./screens/LandingScreen";
-import MovieCard from "./components/MovieCard";
+import MovieCardScreen from "./screens/MovieCardScreen";
 import Colors from "./constants/Colors";
 import SurvivorScreen from "./screens/SurvivorScreen";
 import ViewingListScreen from "./screens/ViewingListScreen";
 
 export default function App() {
   const Tab = createBottomTabNavigator();
+  const Stack = createStackNavigator();
+
+  const SearchStack = () => {
+    return (
+      <Stack.Navigator>
+        <Stack.Screen name="SearchScreen" component={SearchScreen} />
+        <Stack.Screen name="MovieInfoScreen" component={MovieCardScreen} />
+      </Stack.Navigator>
+    );
+  };
 
   return (
     <NavigationContainer>
@@ -43,7 +54,7 @@ export default function App() {
           inactiveTintColor: Colors.secondary,
         }}
       >
-        <Tab.Screen name="Search" component={SearchScreen} />
+        <Tab.Screen name="Search" component={SearchStack} />
         <Tab.Screen name="ViewingList" component={ViewingListScreen} />
         <Tab.Screen name="Survivor" component={SurvivorScreen} />
       </Tab.Navigator>

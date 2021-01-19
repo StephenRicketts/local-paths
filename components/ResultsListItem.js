@@ -7,7 +7,14 @@ import ResultsButtons from "../components/ResultsButtons";
 const ResultsListItem = (props) => {
   const selectMovie = () => {
     console.log("selectMovie hit");
-    props.setShowMovieModal(true);
+    props.navigation.dispatch(
+      CommonActions.navigate({
+        name: "MovieInfoScreen",
+        params: {
+          movie: props.movieData,
+        },
+      })
+    );
   };
 
   return (
