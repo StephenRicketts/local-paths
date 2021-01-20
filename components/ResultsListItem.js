@@ -11,7 +11,7 @@ const ResultsListItem = (props) => {
       CommonActions.navigate({
         name: "MovieInfoScreen",
         params: {
-          movie: props.movieData,
+          movieData: props.movieData,
         },
       })
     );
