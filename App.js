@@ -14,6 +14,16 @@ import Colors from "./constants/Colors";
 import SurvivorScreen from "./screens/SurvivorScreen";
 import ViewingListScreen from "./screens/ViewingListScreen";
 import movieListReducer from "./store/reducers/movieLists";
+import { init } from "./helpers/db";
+
+init()
+  .then(() => {
+    console.log("Initialized database");
+  })
+  .catch((err) => {
+    console.log("Initializing db failed");
+    console.log(err);
+  });
 
 const store = createStore(movieListReducer);
 
