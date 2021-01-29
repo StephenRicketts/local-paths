@@ -25,7 +25,9 @@ const styles = StyleSheet.create({
     elevation: 32,
   },
   font: {
-    fontSize: 18,
+    fontSize: 10,
+    color: "white",
+    padding: 2,
   },
 });
 

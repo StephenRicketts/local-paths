@@ -13,7 +13,7 @@ import MovieCardScreen from "./screens/MovieCardScreen";
 import Colors from "./constants/Colors";
 import SurvivorScreen from "./screens/SurvivorScreen";
 import ViewingListScreen from "./screens/ViewingListScreen";
-import movieListReducer from "./store/reducers/movieLists";
+import movieListReducer from "./store/movieLists";
 import { init } from "./helpers/db";
 
 init()
@@ -68,6 +68,8 @@ export default function App() {
           tabBarOptions={{
             activeTintColor: Colors.primary,
             inactiveTintColor: Colors.secondary,
+            activeBackgroundColor: Colors.detailOne,
+            inactiveBackgroundColor: Colors.detailTwo,
           }}
         >
           <Tab.Screen name="Search" component={SearchStack} />

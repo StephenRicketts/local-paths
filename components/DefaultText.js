@@ -10,7 +10,6 @@ const DefaultText = (props) => {
 const styles = StyleSheet.create({
   text: {
     fontFamily: "monospace",
-    color: "white",
   },
 });
 

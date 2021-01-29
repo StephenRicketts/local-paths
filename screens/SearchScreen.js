@@ -3,7 +3,6 @@ import { View, StyleSheet } from "react-native";
 
 import ResultsList from "../components/ResultsList";
 import SearchBar from "../components/SearchBar";
-import Background from "../components/Background";
 
 const SearchScreen = (props) => {
   const [searchResults, setSearchResults] = useState([]);

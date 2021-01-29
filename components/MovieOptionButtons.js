@@ -5,7 +5,7 @@ import * as listActions from "../store/lists-actions";
 
 import MainButton from "./MainButton";
 
-const MovieActionOptions = (props) => {
+const MovieOptionButtons = (props) => {
   const dispatch = useDispatch();
 
   const addMovie = () => {
@@ -15,7 +15,9 @@ const MovieActionOptions = (props) => {
 
   return (
     <View style={styles.buttonContainer}>
-      <MainButton style={styles.button}>Add to List</MainButton>
+      <MainButton onPress={addMovie} style={styles.button}>
+        Add to List
+      </MainButton>
       <MainButton style={styles.button}>Nominate for survivor</MainButton>
     </View>
   );
@@ -23,6 +25,8 @@ const MovieActionOptions = (props) => {
 
 const styles = StyleSheet.create({
   buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
     width: 125,
     height: 50,
   },
@@ -32,4 +36,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MovieActionOptions;
+export default MovieOptionButtons;

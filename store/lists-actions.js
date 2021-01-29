@@ -1,9 +1,8 @@
-import { insertMovie } from ".../helpers/db";
+import { insertMovie } from "../helpers/db";
 
 export const ADD_MOVIE_TO_VIEWINGLIST = "ADD_MOVIE_TO_VIEWINGLIST";
 
-
-export const addMovieToViewingList = (movieObj) => {
+export const addMovieToViewingList = async (movieObj) => {
   try {
     const dbResult = await insertMovie(title, movieId);
     console.log(dbResult);
@@ -11,7 +10,4 @@ export const addMovieToViewingList = (movieObj) => {
     console.log(err);
     throw err;
   }
-
-}
-
-
+};

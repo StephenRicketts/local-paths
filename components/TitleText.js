@@ -10,7 +10,6 @@ const TitleText = (props) => {
 const styles = StyleSheet.create({
   text: {
     fontFamily: "serif",
-    color: "white",
   },
 });
 
