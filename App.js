@@ -8,7 +8,6 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 
 import SearchScreen from "./screens/SearchScreen";
-import LandingScreen from "./screens/LandingScreen";
 import MovieCardScreen from "./screens/MovieCardScreen";
 import Colors from "./constants/Colors";
 import SurvivorScreen from "./screens/SurvivorScreen";
@@ -33,16 +32,26 @@ export default function App() {
 
   const SearchStack = () => {
     return (
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
         <Stack.Screen name="SearchScreen" component={SearchScreen} />
         <Stack.Screen name="MovieInfoScreen" component={MovieCardScreen} />
       </Stack.Navigator>
     );
   };
 
+  const MyTheme = {
+    colors: {
+      background: Colors.detailOne,
+    },
+  };
+
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      <NavigationContainer theme={MyTheme}>
         <Tab.Navigator
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {

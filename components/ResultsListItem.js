@@ -2,11 +2,8 @@ import React from "react";
 import { View, Image, Text, StyleSheet, Pressable } from "react-native";
 import { CommonActions } from "@react-navigation/native";
 
-import ResultsButtons from "../components/ResultsButtons";
-
 const ResultsListItem = (props) => {
   const selectMovie = () => {
-    console.log("selectMovie hit");
     props.navigation.dispatch(
       CommonActions.navigate({
         name: "MovieInfoScreen",
