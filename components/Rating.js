@@ -3,14 +3,13 @@ import { Rating } from "react-native-ratings";
 import Colors from "../constants/Colors";
 
 const RatingStars = (props) => {
+  console.log("this is the rating number in component", props.ratingNumber);
   return (
     <Rating
-      ratingBackgroundColor="#0B0C10"
-      showRating
+      tintColor={Colors.secondary}
       fractions={1}
-      defaultRating={3}
-      ratingColor="#66FCF1"
-      showRating={false}
+      startingValue={props.ratingNumber}
+      readonly={true}
     />
   );
 };

@@ -11,6 +11,8 @@ import RatingStars from "../components/Rating";
 const MovieCard = (props) => {
   console.log("this is the route I think", props.route);
   const movieData = props.route.params.movieData;
+  const ratingNumber = movieData.vote_average / 2;
+  console.log("this should be the rating number", ratingNumber);
   return (
     <View style={styles.content}>
       <Card style={styles.card}>
@@ -29,7 +31,7 @@ const MovieCard = (props) => {
             {movieData.overview}
           </DefaultText>
           <View>
-            <RatingStars />
+            <RatingStars ratingNumber={ratingNumber} />
           </View>
         </View>
         <MovieOptionButtons />

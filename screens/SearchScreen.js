@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text, Image } from "react-native";
+import Colors from "../constants/Colors";
 
 import ResultsList from "../components/ResultsList";
 import SearchBar from "../components/SearchBar";
@@ -8,6 +9,8 @@ const SearchScreen = (props) => {
   const [searchResults, setSearchResults] = useState([]);
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Movie Survivor</Text>
+      <Image style={styles.logo} source={"../../assets/TMDBlogo.png"} />
       <SearchBar
         setSearchResults={setSearchResults}
         searchResults={searchResults}
@@ -29,6 +32,15 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     paddingTop: 20,
     paddingHorizontal: 20,
+  },
+  title: {
+    fontSize: 28,
+    color: Colors.primary,
+    paddingTop: 20,
+  },
+  logo: {
+    height: 20,
+    width: "100%",
   },
 });
 
